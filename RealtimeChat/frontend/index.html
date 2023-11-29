@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome to mychat</title>
+</head>
+
+<body>
+    <script>
+        const socket = new WebSocket(`ws://localhost:8089/?username=${username}`);
+
+        socket.onmessage = function (event) {
+            const chatDiv = document.getElementById("chat");
+            chatDiv.innerHTML += "<p>" + event.data + "</p>";
+        };
+
+        function sendMessage() {
+            const messageInput = document.getElementById("messageInput");
+            const message = messageInput.value;
+            socket.send(message);
+            messageInput.value = "";
+        }
+
+        function newSignUp(){
+
+        }
+    </script>
+</body>
+
+</html>
